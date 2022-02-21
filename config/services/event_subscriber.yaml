@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: false
+        autoconfigure: false
+        public: false
+
+    app.event_subscriber.restore_tag_bag:
+        class: App\EventSubscriber\RestoreTagBagSubscriber
+        decorates: setono_tag_bag.event_listener.restore_tag_bag_subscriber
+        arguments:
+            - '@.inner'
+        tags:
+            - { name: kernel.event_subscriber }  
